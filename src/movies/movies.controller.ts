@@ -10,6 +10,7 @@ import {
   Post,
 } from '@nestjs/common';
 import { CreateMovieDto } from './dto/create-movie.dto';
+import { UpdateMovieDto } from './dto/update-movie.dto';
 
 @Controller('movies')
 export class MoviesController {
@@ -37,10 +38,7 @@ export class MoviesController {
   // 일부 업데이트 patch
   // 전체 업데이트 put
   @Patch(':id')
-  patch(@Param('id') movieId: number, @Body() updateData) {
-    return {
-      updatedMovie: movieId,
-      ...updateData,
-    };
+  patch(@Param('id') movieId: number, @Body() updateData: UpdateMovieDto) {
+    return this.moviesService.update(movieId, updateData);
   }
 }
