@@ -7,5 +7,3 @@ import { MoviesService } from './movies.service';
   providers: [MoviesService],
 })
 export class MoviesModule {}
-
-2:17
